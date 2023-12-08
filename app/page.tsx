@@ -71,7 +71,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-2">
             <h3 className="uppercase text-gray-500 font-semibold">Check out</h3>
             <h2 className="text-primaryy font-bold text-4xl italic">Menu</h2>
-            <div className="flex flex-wrap gap-x-10 justify-start items-center pt-20">
+            <div className="grid grid-cols-3 gap-x-10 gap-y-24 justify-center items-center pt-20">
               {menu.map((item, i) => (
                 <Card
                   className="flex flex-col relative h-[200px] w-[240px] justify-center items-center bg-gray-300"
