@@ -125,6 +125,27 @@ export default function Home() {
           </div>
         </div>
       </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-20">
+          <h3 className="uppercase text-gray-500 font-semibold">
+            Feel free to
+          </h3>
+          <h2 className="text-primaryy font-bold text-4xl italic">
+            Contact Us
+          </h2>
+          <div className="flex gap-x-8 mt-8">
+            <div className="flex flex-col">
+              <p>stpizza13@gmail.com</p>
+              <p className="text-primaryy font-bold">EMAIL</p>
+            </div>
+            <div className="flex flex-col">
+              <p>+63 912 312 2341</p>
+              <p className="text-primaryy font-bold">CELL. NUMBER</p>
+            </div>
+          </div>
+        </div>
+      </MaxWidthWrapper>
     </>
   );
 }
