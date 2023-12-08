@@ -21,7 +21,7 @@ export default function Home() {
             Everything is better <br /> with a{" "}
             <span className="text-[#F97316]">Pizza</span>
           </h1>
-          <p className="my-4 text-gray-500">
+          <p className="leading-8 my-4 text-gray-500">
             Pizza is the missing piece that makes every day complete, a simple
             yet delicious joy in life
           </p>
@@ -74,7 +74,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-x-10 gap-y-24 justify-center items-center pt-20">
               {menu.map((item, i) => (
                 <Card
-                  className="flex flex-col relative h-[200px] w-[240px] justify-center items-center bg-gray-300"
+                  className="flex flex-col relative h-[200px] w-[240px] justify-center items-center bg-gray-300 transition-all duration-300 ease-in-out hover:bg-white hover:cursor-pointer hover:shadow-xl"
                   key={i}
                 >
                   <CardHeader>
@@ -89,7 +89,9 @@ export default function Home() {
                   </CardHeader>
                   <CardContent>
                     <h4 className="font-semibold">{item.productName}</h4>
-                    <p className="text-gray-500 text-sm">{item.description}</p>
+                    <p className="text-gray-500 text-sm mt-2">
+                      {item.description}
+                    </p>
                   </CardContent>
                   <CardFooter>
                     <Link href="/products" className={buttonVariants()}>
@@ -102,6 +104,27 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
+
+      <MaxWidthWrapper>
+        <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-20">
+          <h3 className="uppercase text-gray-500 font-semibold">Our story</h3>
+          <h2 className="text-primaryy font-bold text-4xl italic">About Us</h2>
+          <div className="flex flex-col gap-y-4 mt-4">
+            <p className="leading-8">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+              architecto quisquam, sequi numquam omnis recusandae officiis
+              inventore laudantium non earum, fuga deleniti. Iure cumque
+              consectetur dolor quisquam necessitatibus accusantium asperiores.
+            </p>
+            <p className="leading-8">
+              {" "}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+              architecto quisquam, sequi numquam omnis recusandae officiis.
+              sequi numquam omnis recusandae officiis .
+            </p>
+          </div>
+        </div>
+      </MaxWidthWrapper>
     </>
   );
 }
