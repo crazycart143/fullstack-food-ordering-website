@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between max-w-4xl mx-auto">
       <a href="" className="text-[#F97316] font-semibold text-2xl">
         ST PIZZA
       </a>

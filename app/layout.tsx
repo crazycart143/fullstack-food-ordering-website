@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,11 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "relative h-full font-sans antialiased",
-          roboto.className
+          "relative h-full font-sans antialiased overflow-hidden",
+          inter.className
         )}
       >
-        <main className="relative max-w-4xl mx-auto p-4 min-h-screen">
+        <main className="relative  w-full p-4 min-h-screen">
           <Navbar />
           <div className="flex-grow flex-1">{children}</div>
         </main>
