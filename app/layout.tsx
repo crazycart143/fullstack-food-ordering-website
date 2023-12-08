@@ -3,6 +3,7 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +25,12 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <main className="relative w-full p-4 min-h-screen">
-          <Navbar />
-          <div className="flex-grow flex-1">{children}</div>
+        <main className="relative w-full py-4 min-h-screen">
+          <div className="flex-grow flex-1">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </main>
       </body>
     </html>
