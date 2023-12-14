@@ -18,7 +18,11 @@ const page = () => {
         >
           Register
         </Link>
-        <p className="text-gray-400 text-sm">or login using:</p>
+        <div className="relative flex py-5 w-full items-center">
+          <div className="flex-grow border-t border-gray-400"></div>
+          <span className="flex-shrink mx-4 text-gray-400">or login with</span>
+          <div className="flex-grow border-t border-gray-400"></div>
+        </div>
         <Button className="flex gap-x-4 bg-white text-black border-2 border-gray-300 rounded-full w-full hover:text-white">
           <Image src="/google.png" alt="google" height={16} width={16} /> Login
           with Google
