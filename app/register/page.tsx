@@ -12,11 +12,13 @@ import React, { useState } from "react";
 const page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean | null>(null);
+  const [error, setError] = useState<boolean | null>(null);
   const router = useRouter();
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
     try {
       const response = await fetch(`/api/register`, {
         method: "POST",
@@ -35,34 +37,44 @@ const page = () => {
         console.log("error");
       }
     } catch (error) {
-      console.error("Failed to update loan:", error);
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="mt-8 h-full w-full flex flex-col justify-center items-center">
+    <section className="mt-14  h-screen w-full flex flex-col justify-start items-center">
       <h1 className="text-center text-primary text-4xl">Register</h1>
       <form
         onSubmit={handleFormSubmit}
-        className="w-[500px] flex flex-col justify-center items-center gap-y-6 mt-10 px-10"
+        className="w-[500px] flex flex-col justify-center items-center gap-y-6 mt-10 px-16"
       >
         <Input
           placeholder="Email"
           className="placeholder:text-gray-400"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <Input
           placeholder="Password"
           className="placeholder:text-gray-400"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
+        {error && <p className="text-red-500">An error has occured.</p>}
+
         <Button
           type="submit"
-          className={cn("w-full rounded-full", buttonVariants())}
+          disabled={isSubmitting ?? undefined}
+          className={cn(
+            "w-full rounded-full disabled:opacity-50",
+            buttonVariants()
+          )}
         >
-          Register
+          {isSubmitting ? "Submitting...." : "Register"}
         </Button>
         <div className="relative flex py-5 w-full items-center">
           <div className="flex-grow border-t border-gray-400"></div>
