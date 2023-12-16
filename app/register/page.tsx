@@ -3,9 +3,7 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -34,10 +32,10 @@ const page = () => {
       if (response.ok) {
         router.replace("/");
       } else {
-        console.log("error");
+        setError(true);
       }
     } catch (error) {
-      setError(true);
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
