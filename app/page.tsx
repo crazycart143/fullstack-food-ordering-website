@@ -1,3 +1,5 @@
+"use client";
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -8,14 +10,17 @@ import {
 } from "@/components/ui/card";
 import { menu } from "@/config/constant";
 import { ArrowRightCircle, MoveRight } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const session = useSession();
+  console.log(session);
   return (
     <>
       {/* Hero */}
-      <MaxWidthWrapper className="grid grid-cols-2 max-w-4xl mx-auto my-10">
+      <MaxWidthWrapper className="grid grid-cols-2 max-w-4xl mx-auto pl-[80px] my-10">
         <div>
           <h1 className="text-4xl font-semibold leading-[46px]">
             Everything is better <br /> with a{" "}
@@ -39,13 +44,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="relative  ">
-          <Image
-            src="/pizza.png"
-            alt="pizza"
-            layout="fill"
-            objectFit="contain"
-          />
+        <div className="relative flex justify-center  ">
+          <Image src="/pizza.png" height={300} width={300} alt="pizza" />
         </div>
       </MaxWidthWrapper>
 
@@ -55,20 +55,22 @@ export default function Home() {
           <div className="h-48 w-48 absolute -left-12">
             <Image
               src="/sallad1.png"
-              layout="fill"
-              objectFit="contain"
+              width={192}
+              height={192}
               alt="sallad"
+              className="object-fill"
             />
           </div>
           <div className="h-48 w-48 absolute -right-12">
             <Image
               src="/sallad2.png"
-              layout="fill"
-              objectFit="contain"
+              width={192}
+              height={192}
               alt="sallad"
+              className="object-fill"
             />
           </div>
-          <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-2">
+          <div className="max-w-4xl pl-[80px] mx-auto text-center flex flex-col justify-center items-center pt-2">
             <h3 className="uppercase text-gray-500 font-semibold">Check out</h3>
             <h2 className="text-primaryy font-bold text-4xl italic">Menu</h2>
             <div className="grid grid-cols-3 gap-x-10 gap-y-24 justify-center items-center pt-20">
@@ -106,7 +108,7 @@ export default function Home() {
       </section>
 
       <MaxWidthWrapper>
-        <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-20">
+        <div className="max-w-4xl pl-[80px] mx-auto text-center flex flex-col justify-center items-center pt-20">
           <h3 className="uppercase text-gray-500 font-semibold">Our story</h3>
           <h2 className="text-primaryy font-bold text-4xl italic">About Us</h2>
           <div className="flex flex-col gap-y-4 mt-4">
@@ -127,7 +129,7 @@ export default function Home() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper>
-        <div className="max-w-4xl mx-auto text-center flex flex-col justify-center items-center pt-20">
+        <div className="max-w-4xl pl-[80px] mx-auto text-center flex flex-col justify-center items-center pt-20">
           <h3 className="uppercase text-gray-500 font-semibold">
             Feel free to
           </h3>

@@ -2,6 +2,8 @@ import NextAuth from "next-auth/next";
 import { SessionStrategy } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDb } from "@/lib/database";
+import User from "@/models/User";
+const bcrypt = require("bcrypt");
 
 interface AuthOptions {
   providers: any[]; // You can specify a more specific type here if needed
@@ -23,27 +25,21 @@ const authOptions: AuthOptions = {
       async authorize(
         credentials: Record<string | string, string> | undefined
       ) {
-        const username = credentials?.username ?? "";
         const email = credentials?.email ?? "";
         const password = credentials?.password ?? "";
 
         try {
           await connectToDb();
-          const user = await User.findOne({ memberId });
+          const user = await User.findOne({ email });
+
+          const isPasswordOk =
+            user && bcrypt.compareSync(password, user.password);
 
           if (!user) {
             return null;
           }
 
-          if (password !== user.password) {
-            return null;
-          }
-
-          if (user.isActive === 0) {
-            return null;
-          }
-
-          if (user) {
+          if (isPasswordOk) {
             return user;
           }
         } catch (error) {

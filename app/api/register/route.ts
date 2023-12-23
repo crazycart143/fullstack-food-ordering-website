@@ -15,6 +15,7 @@ export const POST = async (req: any) => {
       email,
       password,
     });
+
     await newUser.save();
 
     return new Response(

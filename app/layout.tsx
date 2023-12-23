@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
+import { SessionProvider } from "next-auth/react";
+import { AppProvider } from "@/components/AppContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +29,11 @@ export default function RootLayout({
       >
         <main className="relative w-full py-4 min-h-screen">
           <div className="flex-grow flex-1">
-            <Navbar />
-            {children}
-            <Footer />
+            <AppProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </AppProvider>
           </div>
         </main>
       </body>

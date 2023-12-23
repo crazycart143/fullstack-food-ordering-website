@@ -5,6 +5,7 @@ interface user {
   email: String;
   password: String;
 }
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -29,6 +30,7 @@ const userSchema = new mongoose.Schema({
 userSchema.post("validate", function (user: user) {
   const notHashedPassword = user.password;
   const salt = bcrypt.genSaltSync(10);
+  console.log(user.password);
   user.password = bcrypt.hashSync(notHashedPassword, salt);
 });
 
